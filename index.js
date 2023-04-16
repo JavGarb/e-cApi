@@ -13,6 +13,9 @@ server.get('/', (req, res) => {
 //routing
 routerApi(server);
 
+//recibir formato json
+server.use(express.json());
+
 //middlewares para manejo de errores
 server.use(errorLogs);
 server.use(errorHandler);
