@@ -3,7 +3,7 @@ const express = require ('express');
 const routerApi = require('./routes');
 const server = express();
 const port = 3000;
-const { errorHandler, errorLogs } = require('./middlewares/error.handlers');
+const { errorHandler, errorLogs, boomErrorHandler } = require('./middlewares/error.handlers');
 
 //ruta principal
 server.get('/', (req, res) => {
@@ -18,6 +18,7 @@ server.use(express.json());
 
 //middlewares para manejo de errores
 server.use(errorLogs);
+server.use(boomErrorHandler);
 server.use(errorHandler);
 
 server.listen(port, ()=>{
