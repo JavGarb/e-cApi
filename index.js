@@ -1,5 +1,6 @@
 //Inicio del servidor
-const express = require ('express');
+const express = require('express');
+const cors = require('cors');
 const routerApi = require('./routes');
 const server = express();
 const port = 3000;
@@ -15,6 +16,9 @@ routerApi(server);
 
 //recibir formato json
 server.use(express.json());
+
+//Uso de cors
+server.use(cors());
 
 //middlewares para manejo de errores
 server.use(errorLogs);
