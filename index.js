@@ -5,6 +5,7 @@ const routerApi = require('./routes');
 const server = express();
 const port = 3000;
 const { errorHandler, errorLogs, boomErrorHandler } = require('./middlewares/error.handlers');
+const { conn } = require('./libs/sequelize');
 
 //ruta principal
 server.get('/', (req, res) => {
@@ -25,7 +26,13 @@ server.use(errorLogs);
 server.use(boomErrorHandler);
 server.use(errorHandler);
 
-server.listen(port, ()=>{
-  console.log('Server listening in port ' + port);
+conn.sync({ force: true }).then(() => {
+  server.listen(port, () => {
+    console.log('Server listening in port ' + port);
+  });
 });
+
+
+
+
 
