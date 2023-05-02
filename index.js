@@ -1,11 +1,15 @@
-//Inicio del servidor
 const express = require('express');
 const cors = require('cors');
 const routerApi = require('./routes');
 const server = express();
 const port = 3000;
-const { errorHandler, errorLogs, boomErrorHandler } = require('./middlewares/error.handlers');
-const { conn } = require('./libs/sequelize');
+const {
+  errorHandler,
+  errorLogs,
+  boomErrorHandler,
+} = require('./middlewares/error.handlers');
+const sequelize = require('./libs/sequelize');
+const ormErrorHandler = require('./middlewares/ormErrorHandler');
 
 //ruta principal
 server.get('/', (req, res) => {
@@ -23,16 +27,11 @@ server.use(cors());
 
 //middlewares para manejo de errores
 server.use(errorLogs);
+server.use(ormErrorHandler);
 server.use(boomErrorHandler);
 server.use(errorHandler);
 
-conn.sync({ force: true }).then(() => {
-  server.listen(port, () => {
-    console.log('Server listening in port ' + port);
-  });
+server.listen(port, () => {
+  sequelize.sync({force: true});
+  console.log('Server listening in port ' + port);
 });
-
-
-
-
-
