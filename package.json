@@ -1,32 +1,33 @@
 {
-  "name": "api-rest",
+  "name": "prueba-node-angular",
   "version": "1.0.0",
-  "description": "Api de e-commerce",
-  "main": "index.js",
+  "description": "",
+  "main": "app.ts",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js",
-    "lint": "eslint"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app"
   },
   "keywords": [],
-  "author": "Javier Garbalena",
+  "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@faker-js/faker": "^7.6.0",
-    "eslint": "^8.38.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "nodemon": "^2.0.22",
-    "prettier": "^2.8.7"
-  },
   "dependencies": {
-    "@hapi/boom": "^10.0.1",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "joi": "^17.9.1",
+    "jsonwebtoken": "^9.0.0",
+    "nodemon": "^2.0.22",
     "pg": "^8.10.0",
-    "pg-hstore": "^2.3.4",
-    "sequelize": "^6.31.0"
+    "sequelize": "^6.31.1",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/body-parser": "^1.19.2",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/pg": "^8.6.6"
   }
 }
